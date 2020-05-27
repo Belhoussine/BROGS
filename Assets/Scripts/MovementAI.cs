@@ -39,9 +39,10 @@ public class MovementAI : MonoBehaviour
         }     
     }
     void move(int i){
-        Debug.Log(i);
-        agent.SetDestination(waypoints[i].transform.position);             
-    }
+        agent.SetDestination(waypoints[i].transform.position);
+		Vector3 direction = (waypoints[i].transform.position - transform.position).normalized;
+		Quaternion lookRotation = Quaternion.LookRotation(direction);
+	}
 
     int generateIndex(){
         return Random.Range(0, numOfWaypoints);
